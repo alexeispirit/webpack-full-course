@@ -52,7 +52,7 @@ module.exports = {
   mode: "development",
   entry: {
     main: ["@babel/polyfill", "./index.js"],
-    analytics: "./analytics.js"
+    analytics: "./analytics.ts"
   },
   output: {
     filename: filename("js"),
@@ -125,6 +125,17 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
+            plugins: ["@babel/plugin-proposal-class-properties"]
+          }
+        }
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        loader: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-typescript"],
             plugins: ["@babel/plugin-proposal-class-properties"]
           }
         }
