@@ -1,3 +1,5 @@
+import { replace } from "estraverse";
+
 export default class Post {
   constructor(title, img) {
     this.title = title;
@@ -6,11 +8,15 @@ export default class Post {
   }
 
   toString() {
-    return JSON.stringify({
-      title: this.title,
-      img: this.img,
-      date: this.date.toJSON()
-    });
+    return JSON.stringify(
+      {
+        title: this.title,
+        img: this.img,
+        date: this.date.toJSON()
+      },
+      null,
+      2
+    );
   }
 
   get uppercaseTitle() {
